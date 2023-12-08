@@ -1,0 +1,164 @@
+# two-Factor-Authentication-App
+two factor authentication app for Android OS (Project)
+6130 project report
+This report details the development process, challenges, and solutions implemented in creating a Two-Factor Authentication (2FA) app using Java on Android Studio. 
+The project, led by Kofi and team members Valentine Obi Ozonyia and Ugochukwu Kizito Ugwu, aimed to enhance user account security beyond traditional authentication methods. 
+The programming language used was java on Android Studio. The team chose a specific Android version for the development of this application. The decision was based on factors 
+such as compatibility, user base, and available features. 
+
+We started with:
+
+Firstly, the team decided to develop a two-factor authentication (2FA) application. This is to help improve the traditional methods of authentication which is username and passwords. 
+This application will add another layer of defense in protecting the user account. 
+
+Below is a step-by-step breakdown of the TwoFactorAuthActivity code and what each part does:
+Step 1: Package Declaration and Imports:
+ 
+
+The code snippet above is part of the com.assignment.twofactorapp package. It imports necessary classes for Android application development, including UI components and utilities.
+
+Step 2: Class Declaration
+ 
+ This declares the TwoFactorAuthActivity class which extends AppCompatActivity
+
+
+
+
+
+Step 3: Field Declarations
+ 
+Defines constants for OTP length, countdown, and duration. Also, UI elements (TestView, ProgressBar, EditText, Button) and a timer are declared.
+
+Step 4: onCreate Method
+ 
+Sets the content view to the layout defined in activity_2fa.xml
+
+Step 5: View Initialization
+ 
+Initializes UI elements by finding them in the layout.
+
+Step 6: Generate Random OTP
+ 
+ Generates random 6 digit OTP and displays it in the TextView.
+
+Step 7: Countdown Timer
+ 
+
+Initiates a countdown timer for OTP expiration.
+
+
+
+
+STEP 8: Submit Button Click Listener
+ 
+
+The code snippet above does the following:
+•	Sets a click listener for the submit OTP button.
+•	Check if the entered OTP is valid and matches the generated OTP.
+•	If successful, start the DashboardActivity; otherwise, shows a toast message.
+
+Step 9: Start Countdown Timer Method
+ 
+Initiates a countdown timer with the specified duration.
+Calls the updateCountdownText method on each tick.
+Handles logic when the timer finishes, e.g., OTP expiration.
+
+Step 10: Update Countdown Text Method
+ 
+Updates the countdown text and progress bar based on the remaining time.
+
+Step 11: onDestroy Method
+ 
+
+Cancel the countdown timer when the activity is destroyed to prevent resource leaks.
+
+TESTING OUR TWO-FACTOR AUTHENTICATION APP
+
+The application test was carried out on
+
+Once the application build is completed, it opens a dashboard that allows a user log in or register if they are a new user. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The MainActivity is the entry point of the Android application. It provides two buttons, btnRegister and btnLogin ,
+allowing users to navigate to the registration and login activities. The Register Activity ( Register.java ): The Register activity is responsible for user registration.
+It includes EditText fields for the user to input their username, password, and confirm password.
+Upon clicking the registration button ( btnRegister ), the code validates user input and registers the user using Firebase Authentication, 
+If the registration is successful, the user is redirected to the login activity ( Login ).
+Upon successful registration, the user is redirected to the login page where they authenticate using the credentials and are presented with a screen with the randomly generated 6-digit OTP. 
+ 
+Figure 3 OTP generation
+
+The screenshots above show what a user sees after a successful authentication, they are presented with a random 6-digit OTP which when entered correctly, 
+takes them to the Dashboard which is the screenshot on the right with a Welcome to 6130 Defense project display.
+
+However, after several considerations by the team(Valentine Kofi, and  Kizito), we realized that displaying the OTP on the application screen defeats the purpose of being a two-factor authentication method.
+We agreed to get to use email for registration and login. In this case, the user will get an email with a link to verify their identity. With the new implementation, 
+a few changes were made and upon clicking the registration button ( btnRegister ), the code validates user input, registers the user using Firebase Authentication, sends an email verification,
+and stores user data (username, email, phone number) in the Firebase Realtime Database. Additionally, the OTP no longer displays on the screen. The user gets an email with a link to verify their identity. 
+Find the various screens from the application below:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Let's dive into the second App: 
+We will look at the Main Activity now. Let’s launch the app.  As you can see from the screenshot above, our app starts with the main activity, offering a seamless experience for users. Here, they have the option to either register or log in.  As I click on 'Register,' our app navigates to the registration activity. This is where users input their details to create an account. Pay attention to the real-time feedback and Firebase integration." We will use a temporary Email Address for the registration.
+
+
+
+
+
+
+
+
+
+
+
+
+The user inputs their desired username, email, password, phone number, and password. 
+
+
+ 
+Figure 7 User completing registration
+
+
+We made use of a temporary email address and filled in the other fields accordingly. Once the user completes the registration, they are taken to the login page where they enter their username(email) and password as can be seen from the screenshot below. We will login using the email and password created earlier.
+ 
+Figure 9 User login
+Once the user enters the correct and registered email address and password, real-time Firebase validates the user input, and the user gets an email address to verify their login activity as can be seen in the second screenshot above.
+The user clicks the link and gets a success message as seen below:
+ 
+Figure 10 Success message after verification
+After successful email verification, the user is taken to the Dashboard.
+
+ 
+Figure 11 Dashboard after successful login
+
