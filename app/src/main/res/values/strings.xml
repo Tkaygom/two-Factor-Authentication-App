@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TwoFactorApp</string>
+    <string name="generated_otp">Generated OTP: %1$s</string>
+</resources>
